@@ -30,7 +30,8 @@ This repository includes configuration files for the following applications:
 ├── swappy     # Screenshot annotation tool
 ├── wallust    # Color scheme manager
 ├── waybar     # Status bar for Wayland
-└── wezterm    # Terminal
+├── wezterm    # Terminal
+└── floorp     # Floorp browser customization
 ```
 
 ---
@@ -109,6 +110,35 @@ My setup uses a custom GTK configuration based on the [phocus/gtk](https://githu
 4. Wallust automatically regenerates the theme based on the new wallpaper
 
 This creates a seamless visual experience where your file manager and other GTK applications automatically match your desktop theme.
+
+---
+
+## 🦊 Floorp - Customized Browser Theme
+
+My setup includes a custom theme for the Floorp browser that integrates with the overall system aesthetic. Floorp is a Firefox-based browser with enhanced privacy features and customization options.
+
+<div align="center">
+  <img src="image/Floorp.png" alt="Floorp Custom Theme" width="80%">
+  <p><em>Floorp browser with custom theme</em></p>
+</div>
+
+### Features
+- Custom CSS for seamless integration with Hyprland
+- Theme adapts to Wallust color scheme
+- Enhanced privacy settings
+- Custom startpage
+- Optimized for keyboard navigation
+
+### Installation and Setup
+1. Install Floorp browser: `yay -S floorp-bin`
+2. Copy the custom theme files:
+   ```bash
+   cp -r .config/floorp/chrome/ ~/.config/floorp/[your-profile]/
+   ```
+3. Enable custom CSS in Floorp:
+   - Navigate to `about:config`
+   - Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`
+4. Restart Floorp to apply the changes
 
 ---
 
