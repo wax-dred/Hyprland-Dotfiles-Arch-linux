@@ -1,0 +1,36 @@
+# ⚠️ Ne pas ignorer .config pour garder ta config (on suit .config/* volontairement)
+
+# Ignorer les caches et fichiers temporaires
+*.log
+*.bak
+*~
+*.tmp
+*.swp
+*.swo
+
+# Cache système / XDG
+.cache/
+.trash/
+.goutputstream-*
+recently-used.xbel
+.xsession-errors*
+
+# Historique shell (personnel)
+.fish_history
+.bash_history
+.zsh_history
+
+# Éviter de versionner les profils lourds ou non essentiels
+.floorp/
+.mozilla/
+.config/discord/
+.config/spotify/
+.config/Steam/
+.config/Code/
+
+# Fichiers de bureau et thumbnails
+.DS_Store
+Thumbs.db
+
+# GTK/thumbnail cache
+.thumbnails/
