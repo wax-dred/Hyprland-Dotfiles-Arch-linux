@@ -62,8 +62,7 @@ To use the wallpaper selector:
 
 Wallpaper:
  ~/Pictures/wallpapers/
-
-Mpvpaper
+Mpvpaper:
 ~/Pictures/wallpapers/Video/
 ---
 
