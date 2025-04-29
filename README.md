@@ -74,9 +74,9 @@ My setup uses a custom GTK configuration based on the [phocus/gtk](https://githu
 
 ![Thunar with Wallust](image/Wallust_gtk.png)
 
-![Thunar Wallust 1](image/Wall-1.png)
+![Thunar Wallust 1](image/Wall_1.png)
 
-![Thunar Wallust change 2](image/Wall-2.png)
+![Thunar Wallust change 2](image/Wall_2.png)
 
 #### How it works:
 1. Wallust extracts a color palette from the current wallpaper
