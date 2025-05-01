@@ -21,7 +21,6 @@ recently-used.xbel
 .zsh_history
 
 # Éviter de versionner les profils lourds ou non essentiels
-.floorp/
 .mozilla/
 .config/discord/
 .config/spotify/
