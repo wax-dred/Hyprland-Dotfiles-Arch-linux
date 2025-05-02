@@ -1,0 +1,23 @@
+@use "../colors";
+
+iconview {
+    background: colors.$surface-moderate;
+    padding: 0.3em;
+
+    &:selected {
+        color: colors.$red;
+        background: colors.$accent-primary;
+        border-radius: 0.5em;
+    }
+}
+
+thunariconview {
+    background: colors.$surface-moderate;
+    padding: 0.3em;
+
+    &:selected {
+        color: colors.$red;
+        background: colors.$accent-primary;
+        border-radius: 0.5em;
+    }
+}

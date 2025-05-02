@@ -1,0 +1,14 @@
+@use "../colors";
+
+frame > border,
+.frame {
+    border: 2px solid mix(colors.$red-normal, colors.$red, 25%);
+    margin: 5px;
+    border-radius: 20px;
+}
+
+scrolledwindow {
+    viewport.frame {
+        border-style: none;
+    }
+}

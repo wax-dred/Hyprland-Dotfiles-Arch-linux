@@ -1,0 +1,24 @@
+@use "../colors";
+
+popover {
+    background: colors.$surface-strongest;
+    box-shadow: 0 0 5px transparent;
+    border-radius: 10px;
+    padding: 4px;
+
+    box {
+        modelbutton {
+            padding: 0.4em 1em;
+            border-radius: 10px;
+
+            &:hover {
+                background: colors.$white-weakest;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    &.menu:first-child {
+        border-top-left-radius: 0;
+    }
+}

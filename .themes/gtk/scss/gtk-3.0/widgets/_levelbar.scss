@@ -1,0 +1,26 @@
+@use "../colors";
+
+levelbar {
+    trough {
+        block {
+            padding: 3px;
+            border-radius: 3px;
+
+            &.filled {
+                background: colors.$white-strongest;
+                border-radius: 3px;
+            }
+            &.empty {
+                background: colors.$surface-moderate;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    &.discrete {
+        block:not(:first-child) {
+            margin-left: 5px;
+            border-radius: 3px;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+@use "../colors";
+
+.thunar .standard-view,
+.thunar .standard-view selected {
+    background-image: blue;
+    background-color: red;
+    color: #000;
+}

@@ -1,0 +1,24 @@
+@use "sass:color";
+@use "../colors";
+@use "../config";
+
+textview {
+    transition: background 100ms ease-in-out;
+    background: colors.$surface-strongest;
+    padding: config.$spacing-medium config.$spacing-small;
+
+    &:focus {
+        background: transparentize(colors.$red, 0.9);
+    }
+
+    &:disabled {
+        opacity: config.$disabled-opacity;
+    }
+    selection {
+        background: color.change(
+            colors.$accent-primary,
+            $alpha: config.$tint-medium
+        );
+        color: colors.$white-strongest;
+    }
+}

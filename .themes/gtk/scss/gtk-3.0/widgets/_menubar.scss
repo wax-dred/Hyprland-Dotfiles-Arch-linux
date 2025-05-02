@@ -1,0 +1,22 @@
+@use "../colors";
+@use "../config";
+
+menubar {
+    background: colors.$surface-strongest;
+
+    menuitem {
+        padding: config.$spacing-medium;
+        border-radius: 20px;
+
+        &:hover {
+            background: colors.$white-weakest;
+            border-radius: 20px;
+        }
+
+        check,
+        radio {
+            margin-right: config.$spacing-medium;
+            border-radius: 20px;
+        }
+    }
+}

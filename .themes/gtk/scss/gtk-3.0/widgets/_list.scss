@@ -1,0 +1,31 @@
+@use "../colors";
+@use "../config";
+
+list {
+    background: transparent;
+
+    row {
+        background: colors.$surface-strong;
+        color: colors.$green-normal;
+        padding: config.$spacing-medium;
+        border-radius: 10px;
+        &:hover {
+            background: colors.$red;
+            color: colors.$purple-light;
+        }
+        &:active {
+            background: colors.$pink;
+            color: colors.$black-moderate;
+            border-radius: 5px;
+        }
+        &:selected {
+            background: colors.$white-strongest;
+            color: colors.$black-moderate;
+            border-radius: 5px;
+        }
+    }
+
+    > label {
+        padding: config.$spacing-small;
+    }
+}

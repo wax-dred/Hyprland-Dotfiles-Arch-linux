@@ -1,0 +1,46 @@
+@use "../colors";
+@use "../config";
+
+dialog,
+messagedialog {
+  background: colors.$surface-strong;
+
+  .dialog-action-box {
+    background: colors.$surface-strongest;
+    padding: config.$spacing-medium;
+    margin: -0.4em;
+    margin-top: 0;
+    border-radius: 0px;
+  }
+
+  fontchooser,
+  colorchooser {
+    padding: config.$spacing-medium;
+  }
+
+  filechooser {
+    &+.dialog-action-box {
+      margin: 0;
+    }
+
+    #pathbarbox {
+      padding: config.$spacing-small;
+      background: colors.$surface-strongest;
+    }
+
+    treeview {
+      background: transparent;
+      color: colors.$green-normal;
+      border-radius: 10px;
+
+      &:hover {
+        color: colors.$purple-light;
+      }
+
+      &:selected {
+        background: colors.$white-strongest;
+        color: colors.$black-moderate;
+      }
+    }
+  }
+}

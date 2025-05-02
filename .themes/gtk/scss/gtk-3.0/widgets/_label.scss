@@ -1,0 +1,14 @@
+@use "../colors";
+
+label {
+    &.dim-label,
+    &:disabled {
+        opacity: 0.3;
+    }
+
+    selection {
+        background: colors.$surface-strong;
+        color: lighten(colors.$white-strongest, 50%);
+        border-radius: 10px;
+    }
+}

@@ -1,0 +1,18 @@
+@use "../colors";
+@use "../config";
+
+menu {
+    background: transparent;
+    border: 0.2em solid colors.$red;
+    border-radius: 10 10 10 10;
+    color: colors.$purple-light;
+    background-color: colors.$surface-strongest;
+    menuitem {
+        padding: config.$spacing-medium;
+        &:hover {
+            background: colors.$purple-light;
+            color: colors.$red;
+            border-radius: 10px;
+        }
+    }
+}

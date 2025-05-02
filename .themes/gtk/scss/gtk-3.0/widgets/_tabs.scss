@@ -1,0 +1,48 @@
+@use "sass:color";
+@use "../colors";
+@use "../config";
+
+tabs {
+    background: colors.$surface-strongest;
+    display: flex;
+    gap: config.$spacing-small; // Espacement entre onglets
+
+    @each $class,
+        $side
+            in (
+                "top": "bottom",
+                "right": "left",
+                "bottom": "top",
+                "left": "right"
+            )
+    {
+        .#{$class} > & {
+            border-#{$side}: config.$border-size solid colors.$surface-moderate;
+            tab {
+                border-#{$side}: config.$border-size solid transparent;
+                margin-#{$side}: -#{config.$border-size};
+            }
+        }
+    }
+
+    tab {
+        padding: config.$spacing-medium;
+        color: colors.$red;
+        background: colors.$orange-normal;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out; // Animation fluide
+        position: relative;
+
+        &:hover {
+            background: color.scale(colors.$orange-normal, $lightness: +10%);
+            color: colors.$pink;
+            transform: translateY(-2px); // Effet léger de soulèvement
+        }
+
+        &:checked {
+            color: colors.$white-strong;
+            background: color.change(colors.$pink, $alpha: 0.5);
+            transform: translateY(-3px); // Soulèvement plus
+        }
+    }
+}

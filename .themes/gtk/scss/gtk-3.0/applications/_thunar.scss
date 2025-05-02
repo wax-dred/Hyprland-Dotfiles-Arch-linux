@@ -1,0 +1,15 @@
+@use "../colors";
+
+.thunar .view:selected {
+  border: 1px solid colors.$red;
+  border-radius: 5px;
+  color: colors.$red;
+}
+
+.thunar .view:hover {
+  background: colors.$pink-custom;
+  border-radius: 6px;
+  color: colors.$red-custom;
+}
+
+

@@ -1,0 +1,10 @@
+@use "sass:color";
+@use "../colors";
+@use "../config";
+
+rubberband,
+.rubberband {
+    background-color: colors.$white-weakest;
+    border: 1px solid colors.$white-weakest;
+    border-radius: 10px;
+}

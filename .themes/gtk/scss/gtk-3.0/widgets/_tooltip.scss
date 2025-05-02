@@ -1,0 +1,10 @@
+@use "../colors";
+@use "../config";
+
+tooltip {
+    background: colors.$surface-weakest;
+    color: colors.$red-normal;
+    border-radius: 10px;
+    padding: config.$spacing-medium;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); // Effet de profondeur
+}
