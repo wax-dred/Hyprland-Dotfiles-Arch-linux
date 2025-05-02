@@ -1,0 +1,36 @@
+configuration {
+    show-icons:                     true;
+    drun-display-format:            "{name}";
+    drun-match-fields:              "name";
+}
+
+@import "launcher"
+
+listview {
+    padding:                        12px;
+    dynamic:                        true;
+    columns:                        12;
+}
+
+@media (min-width: 2400) {
+    listview {
+        columns:                    16;
+    }
+}
+
+@media (min-width: 3440) {
+    listview {
+        columns:                    22;
+    }
+}
+
+element-icon selected {
+    border-color:                   @primary;
+    background-color:               rgba(0, 0, 0, 0.2);
+}
+
+element-text {
+    horizontal-align:               0.5;
+    horizontal-align:               0.5;
+    width:                          120px;
+}

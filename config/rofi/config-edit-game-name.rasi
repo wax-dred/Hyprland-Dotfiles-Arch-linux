@@ -1,0 +1,49 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Main Config (compact) */
+
+@import "~/.config/rofi/config.rasi"  
+
+/* ---- Mainbox ---- */
+mainbox {
+  children:
+    [ "inputbar", "message", "listview"];
+}
+
+
+/* ---- Configuration ---- */ 
+configuration {
+  modi: "drun";
+}
+
+/* ---- Window ---- */
+window {
+   width: 25%;
+}
+
+
+/* ---- Listview ---- */
+listview {
+  columns: 1;
+  lines: 1;
+  fixed-height: false;
+}
+
+/* ---- Entry input ---- */
+entry {
+  expand: true;
+  placeholder: "   Enter name for new game script";
+}
+
+
+/* ---- Elements ---- */
+element {
+  orientation: horizontal;
+}
+
+element-icon {
+  size: 0%;
+}
+element-text {
+  horizontal-align: 0.0;
+  margin: 5px 30px 5px 30px;
+}

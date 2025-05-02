@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Variables
+MONITOR="DP-2" # Replace with your monitor name
+RESOLUTION="3440x1440"
+REFRESH_RATE="165"
+POSITION="0x0" # Format: x_offsetx_y_offset
+SCALE="1"
+
+# Enable VRR
+echo "Enabling VRR for $MONITOR..."
+notify-send -e -u normal "Enabling VRR for Hyprland"
+hyprctl keyword monitor "$MONITOR,${RESOLUTION}@${REFRESH_RATE},${POSITION},${SCALE},vrr,2"
+
+# taskset -c 0-7,16-23  # This is for 7950x3D CCD put it after MANGOHUD=1 to use.
+
+# Launch the game in the background
+echo "Launching the game..."
+notify-send -e -u normal "Launching the game ..."
+MANGOHUD=1 game-performance "$@" &
+GAME_PID=$!
+
+# Wait a moment to let the game window appear
+sleep 3
+
+# Detect the game’s window class dynamically
+GAME_WINDOW_CLASS=$(hyprctl clients | grep -A 3 "pid: $GAME_PID" | grep "class:" | awk '{print $2}')
+
+if [ -n "$GAME_WINDOW_CLASS" ]; then
+    echo "Applying tearing rule for window class: $GAME_WINDOW_CLASS"
+    hyprctl keyword windowrulev2 "immediate, class:$GAME_WINDOW_CLASS"
+else
+    echo "Failed to detect game window class."
+fi
+
+# Wait for the game process to exit
+wait $GAME_PID
+GAME_EXIT_CODE=$?
+
+# Remove the window rule after the game closes
+if [ -n "$GAME_WINDOW_CLASS" ]; then
+    echo "Removing tearing rule for window class: $GAME_WINDOW_CLASS"
+    hyprctl keyword windowrulev2 "unset, class:$GAME_WINDOW_CLASS"
+fi
+
+# Disable VRR
+echo "Disabling VRR for $MONITOR..."
+notify-send -e -u normal "Disabbling VRR for Hyprland"
+hyprctl keyword monitor "$MONITOR,${RESOLUTION}@${REFRESH_RATE},${POSITION},${SCALE},vrr,0"
+hyprctl reload
+
+# Exit with the game's exit code
+exit $GAME_EXIT_CODE

@@ -1,0 +1,92 @@
+@import "colors.rasi"
+
+window {
+    height:                         240;
+    width:                          100%;
+    location:                       south;
+    anchor:                         south;
+    transparency:                   "real";
+    background-color:               @background;
+    border:                         5px 0px 0px 0px;
+    border-color:                   @primary;
+}
+
+mainbox {
+    children:                       [inputbar-box, listview];
+    padding:                        12px 0px 0px 0px;
+}
+
+listview {
+    padding:                        0px;
+    dynamic:                        true;
+}
+
+inputbar-box {
+    children:                       [inputbar-side, inputbar, dummy];
+    orientation:                    horizontal;
+    expand:                         false;
+}
+
+inputbar-side {
+    border:                         5px 0px 0px 0px;
+    border-color:                   @primary;
+    margin:                         16px -100% 0px 0px;
+}
+
+inputbar {
+    children:                       [textbox-prompt, entry];
+    margin:                         0px 0px 0px 0px;
+    background-color:               @primary;
+    border:                         5px;
+    border-color:                   @primary;
+    border-radius:                  8px;
+}
+
+textbox-prompt {
+    font:                           "Font Awesome 18";
+    text-color:                     @background;
+    padding:                        0px 4px 0px 2px;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    str:                            "";
+    expand:                         false;
+}
+
+entry {
+    expand:                         false;
+    padding:                        4px;
+    margin:                         -6px;
+    horizontal-align:               0.5;
+    width:                          300;
+    background-color:               @background;
+    border:                         6px;
+    border-color:                   @primary;
+    border-radius:                  8px;
+}
+
+element {
+    children:                       [dummy, element-box, dummy];
+    padding:                        0px;
+    orientation:                    horizontal;
+    border:                         0;
+    border-color:                   transparent;
+}
+
+element-box {
+    children:                       [element-icon, element-text];
+    orientation:                    vertical;
+    expand:                         false;
+}
+
+element-icon {
+    padding:                        8px;
+    border:                         4px;
+    border-color:                   transparent;
+    border-radius:                  8;
+    size:                           96;
+}
+
+element-text {
+    horizontal-align:               0;
+    width:                          200px;
+}

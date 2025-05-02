@@ -1,0 +1,104 @@
+#!/bin/bash
+# Script pour lancer des jeux via Gamescope avec optimisations et Untapped.gg
+
+
+# ======= OPTIONS DE CONFIGURATION =======
+GAMESCOPE_OPTIONS="False"  # True / False
+GAME_PERF="True"          # True / False
+GAME_VRR="False"           # True / False
+MANGOHUD_OPTION="True"    # True / False
+OPTION_AFTER="--launcher-skip --nojoy"       # Option after %command%
+
+# ======= PARAMÈTRES GÉNÉRAUX =======
+# Variables d'environnement
+MONITOR="DP-2"
+RESOLUTION="3440x1440"
+REFRESH_RATE="165"
+POSITION="0x0"
+SCALE="1"
+
+# Paramètres pour gamescope
+RES_WIDTH=3440
+RES_HEIGHT=1440
+FSR_MODE="fsr"
+
+# ======= CONFIGURATION EN FONCTION DES OPTIONS =======
+# Configuration de Gamescope
+if [ "$GAMESCOPE_OPTIONS" = "True" ]; then
+    export XKB_DEFAULT_LAYOUT=fr
+    GAMESCOPE_SET="gamescope -W $RES_WIDTH -H $RES_HEIGHT -r $REFRESH_RATE -F $FSR_MODE  --force-grab-cursor --"
+else
+    GAMESCOPE_SET=""
+fi
+
+# Configuration de Game Performance
+if [ "$GAME_PERF" = "True" ]; then
+    GAME_PERF_SET="game-performance"
+else
+    GAME_PERF_SET=""
+fi
+
+# Configuration de MangoHUD
+if [ "$MANGOHUD_OPTION" = "True" ]; then
+    export MANGOHUD=1
+else
+    export MANGOHUD=0
+fi
+
+# Enable VRR and set environment variablesc
+if [ "$GAME_VRR" = "True" ]; then
+    echo "Enabling VRR for $MONITOR..."
+    notify-send -e -u normal "  Enabling VRR Hyprland "
+fi
+
+# ======= CONFIGURATION ENVIRONNEMENT =======
+# Variables d'environnement communes
+export RADV_PERFTEST=gpl
+export mesa_glthread=true
+export __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1
+export WINEDLLOVERRIDES="winmm,version=n,b"
+
+
+# Lancement du jeu en arrière-plan
+notify-send -e -u normal " Launching the game "
+
+$GAME_PERF_SET $GAMESCOPE_SET "$@" $OPTION_AFTER &
+GAME_PID=$!
+
+# Wait a moment to let the game window appear
+sleep 3
+
+# Detect the game's window class dynamically
+if [ "$GAME_VRR" = "True" ]; then
+    GAME_WINDOW_CLASS=$(hyprctl clients | grep -A 3 "pid: $GAME_PID" | grep "class:" | awk '{print $2}')
+    if [ -n "$GAME_WINDOW_CLASS" ]; then
+        echo "Applying tearing rule for window class: $GAME_WINDOW_CLASS"
+        hyprctl keyword windowrulev2 "immediate, class:$GAME_WINDOW_CLASS"
+    else
+    echo "Failed to detect game window class."
+    fi
+fi
+
+# Wait for the game process to exit
+wait $GAME_PID
+GAME_EXIT_CODE=$?
+
+# Terminer le processus Untapped.gg
+kill $UNTAPPED_PID 2>/dev/null
+
+# Remove the window rule after the game closes
+if [ -n "$GAME_WINDOW_CLASS" ]; then
+    echo "Removing tearing rule for window class: $GAME_WINDOW_CLASS"
+    hyprctl keyword windowrulev2 "unset, class:$GAME_WINDOW_CLASS"
+fi
+
+# Disable VRR
+if [ "$GAME_VRR" = "True" ]; then
+    echo "Disabling VRR for $MONITOR..."
+    notify-send -e -u normal "  Disabling VRR Hyprland "
+    hyprctl keyword monitor "$MONITOR,${RESOLUTION}@${REFRESH_RATE},${POSITION},${SCALE},vrr,0"
+    hyprctl reload
+fi
+
+# Exit with the game's exit code
+exit $GAME_EXIT_CODE

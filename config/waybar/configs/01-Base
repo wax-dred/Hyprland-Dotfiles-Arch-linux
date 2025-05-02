@@ -1,0 +1,48 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+
+// ### DEFAULT v2 - Top ### //
+{
+"include": "~/.config/waybar/modules",
+"layer": "top",
+//"mode": "dock",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-top": 3,
+"margin-left": 8,
+"margin-right": 8,
+
+"modules-left": [
+	"custom/menu",
+	"custom/separator#dot-line",
+	"group/motherboard",
+	],
+
+"modules-center": [
+	"custom/swaync",
+	"custom/separator#dot-line",
+	"custom/logitech-battery",
+	"bluetooth",
+	"custom/separator#dot-line",
+	"custom/cava_mviz",
+	"custom/separator#dot-line",
+	"clock",
+	"custom/separator#line",
+	"hyprland/workspaces#4",
+	"custom/separator#dot-line",
+	"custom/niflveil",
+	], 
+
+"modules-right": [
+	"custom/updater",
+	"custom/separator#dot-line",
+	"custom/mpris",
+	"tray",
+	"group/audio",
+	"custom/power",
+	"custom/lock",
+	],
+}

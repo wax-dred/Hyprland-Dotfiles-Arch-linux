@@ -1,0 +1,51 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Main Config (wallpaper) */
+
+@import "~/.config/rofi/config.rasi" 
+
+/* ---- Configuration ---- */ 
+configuration {
+  modi: "drun";
+}
+
+window {
+  width: 15%;
+}
+
+/* ---- Imagebox ---- */
+imagebox {
+  orientation: vertical;
+  children:
+    [ "entry", "listbox"];
+}
+
+
+entry {
+  expand: true;
+  placeholder: "Choose Performance";
+}
+
+/* ---- Listview ---- */
+listview {
+  columns: 3;
+  lines: 1;
+  flow: horizontal;
+}
+
+/* ---- Element ---- */
+element {
+  orientation: vertical;
+  padding: 0px;
+  spacing: 0px;
+  border-radius: 15px;
+}
+
+element-icon {
+  size: 1%;
+}
+
+element-text {
+  font: "Fira Code SemiBold 14";
+  vertical-align: 0.6;
+  horizontal-align: 0.5;
+}
